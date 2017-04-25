@@ -98,7 +98,11 @@ public class MainActivity extends SampleActivityBase {
 
         // Filter strips out everything except the message text.
         MessageOnlyLogFilter msgFilter = new MessageOnlyLogFilter();
-        logWrapper.setNext(msgFilter);
+        if (msgFilter != null && msgFilter.toString().length() > 0) {
+            logWrapper.setNext(msgFilter);
+        } else {
+            Log.v(TAG, "yeaaaa");
+        }
 
         // On screen logging via a fragment with a TextView.
         LogFragment logFragment = (LogFragment) getSupportFragmentManager()
